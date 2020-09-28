@@ -31,12 +31,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
     @Binding var isShown: Bool
     @Binding var selectedImage: UIImage
     
-    private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    
-    init(isShown: Binding<Bool>, selectedImage: Binding<UIImage>) {
-        _isShown = isShown
-        _selectedImage = selectedImage
-    }
+    var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
     func makeCoordinator() -> ImagePickerView.Coordinator {
         return Coordinator(parent: self)

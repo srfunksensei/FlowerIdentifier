@@ -10,9 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var showSheet = false
+    @State private var isSheetShown = false
     @State private var isShowingImagePicker = false
-    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var image: UIImage = UIImage(named: "placeholder")!
     
     var body: some View {
@@ -23,12 +23,12 @@ struct ContentView: View {
                     .frame(width: 300, height: 300, alignment: .center)
                 
                 Button("Choose picture") {
-                    self.showSheet = true
+                    self.isSheetShown = true
                 }.padding()
                     .background(Color.green)
                     .foregroundColor(Color.white)
                     .cornerRadius(10)
-                    .actionSheet(isPresented: $showSheet) {
+                    .actionSheet(isPresented: $isSheetShown) {
                         ActionSheet(title: Text("Select photo"), message: nil, buttons: [
                             .default(Text("Photo library")) {
                                 self.isShowingImagePicker = true
@@ -45,7 +45,7 @@ struct ContentView: View {
             .navigationBarTitle("Identify Flower")
         }
         .sheet(isPresented: $isShowingImagePicker) {
-            ImagePickerView(isShown: self.$isShowingImagePicker, selectedImage: self.$image)
+            ImagePickerView(isShown: self.$isShowingImagePicker, selectedImage: self.$image, sourceType: self.sourceType)
         }
     }
 }
