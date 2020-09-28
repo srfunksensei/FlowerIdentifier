@@ -11,11 +11,14 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var showSheet = false
+    @State private var isShowingImagePicker = false
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var image: UIImage = UIImage(named: "placeholder")!
     
     var body: some View {
         NavigationView {
             VStack {
-                Image("placeholder")
+                Image(uiImage: image)
                     .resizable()
                     .frame(width: 300, height: 300, alignment: .center)
                 
@@ -28,18 +31,22 @@ struct ContentView: View {
                     .actionSheet(isPresented: $showSheet) {
                         ActionSheet(title: Text("Select photo"), message: nil, buttons: [
                             .default(Text("Photo library")) {
-                                
+                                self.isShowingImagePicker = true
+                                self.sourceType = .photoLibrary
                             },
                             .default(Text("Camera")) {
-                                
+                                self.isShowingImagePicker = true
+                                self.sourceType = .camera
                             },
                             .cancel()
                         ])
                 }
             }
+            .navigationBarTitle("Identify Flower")
         }
-        .navigationBarTitle("Identify Flower")
-        
+        .sheet(isPresented: $isShowingImagePicker) {
+            ImagePickerView(isShown: self.$isShowingImagePicker, selectedImage: self.$image)
+        }
     }
 }
 

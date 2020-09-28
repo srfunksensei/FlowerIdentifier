@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5632932521B61300F55941 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5632922521B61300F55941 /* ImagePickerView.swift */; };
 		2C78F8E6251CCE2900CDCFF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F8E5251CCE2900CDCFF0 /* AppDelegate.swift */; };
 		2C78F8E8251CCE2900CDCFF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F8E7251CCE2900CDCFF0 /* SceneDelegate.swift */; };
 		2C78F8EA251CCE2900CDCFF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C78F8E9251CCE2900CDCFF0 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C5632922521B61300F55941 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		2C78F8E2251CCE2900CDCFF0 /* FlowerIdentifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerIdentifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C78F8E5251CCE2900CDCFF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C78F8E7251CCE2900CDCFF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				2C78F8F0251CCE2C00CDCFF0 /* LaunchScreen.storyboard */,
 				2C78F8F3251CCE2C00CDCFF0 /* Info.plist */,
 				2C78F8ED251CCE2C00CDCFF0 /* Preview Content */,
+				2C5632922521B61300F55941 /* ImagePickerView.swift */,
 			);
 			path = FlowerIdentifier;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5632932521B61300F55941 /* ImagePickerView.swift in Sources */,
 				2C78F8E6251CCE2900CDCFF0 /* AppDelegate.swift in Sources */,
 				2C78F8E8251CCE2900CDCFF0 /* SceneDelegate.swift in Sources */,
 				2C78F8EA251CCE2900CDCFF0 /* ContentView.swift in Sources */,
