@@ -8,8 +8,11 @@
 
 import SwiftUI
 import Vision
+import Alamofire
 
 struct ContentView: View {
+    
+    fileprivate let wikipediaURl = "https://en.wikipedia.org/w/api.php"
     
     @State private var title: String = "Identify Flower"
     @State private var isSheetShown = false
@@ -67,6 +70,7 @@ struct ContentView: View {
             }
             
             self.title = result.identifier.capitalized
+            self.requestInfo(flowerName: result.identifier)
         }
         
         let handler = VNImageRequestHandler(ciImage: ciImage)
@@ -75,6 +79,30 @@ struct ContentView: View {
         }
         catch {
             print(error)
+        }
+    }
+    
+    fileprivate func requestInfo(flowerName: String) {
+        let parameters : [String:String] = [
+            "format" : "json",
+            "action" : "query",
+            "prop" : "extracts|pageimages",
+            "exintro" : "",
+            "explaintext" : "",
+            "titles" : flowerName,
+            "redirects" : "1",
+            "pithumbsize" : "500",
+            "indexpageids" : ""
+        ]
+        
+        
+        Alamofire.request(wikipediaURl, method: .get, parameters: parameters).responseJSON { (response) in
+            if response.result.isSuccess {
+                print(response.result.value!)
+            }
+            else {
+                print("Error \(String(describing: response.result.error))")
+            }
         }
     }
 }
