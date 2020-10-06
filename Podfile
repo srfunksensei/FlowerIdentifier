@@ -7,5 +7,6 @@ target 'FlowerIdentifier' do
 
   # Pods for FlowerIdentifier
   pod 'Alamofire', '~> 4.9'
+  pod 'SwiftyJSON'
 
 end
