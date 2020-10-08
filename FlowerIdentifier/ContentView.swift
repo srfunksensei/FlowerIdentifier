@@ -9,6 +9,7 @@
 import SwiftUI
 import Vision
 import Alamofire
+import SwiftyJSON
 
 struct ContentView: View {
     
@@ -89,7 +90,6 @@ struct ContentView: View {
                 fatalError("Could not complete classfication")
             }
             
-            self.title = result.identifier.capitalized
             self.requestInfo(flowerName: result.identifier)
         }
         
@@ -106,19 +106,23 @@ struct ContentView: View {
         let parameters : [String:String] = [
             "format" : "json",
             "action" : "query",
-            "prop" : "extracts|pageimages",
+            "prop" : "extracts",
             "exintro" : "",
             "explaintext" : "",
             "titles" : flowerName,
             "redirects" : "1",
-            "pithumbsize" : "500",
             "indexpageids" : ""
         ]
         
-        
         Alamofire.request(wikipediaURl, method: .get, parameters: parameters).responseJSON { (response) in
             if response.result.isSuccess {
-                print(response.result.value!)
+                let flowerJSON: JSON = JSON(response.result.value!)
+                
+                let pageid = flowerJSON["query"]["pageids"][0].stringValue
+                let flowerDescription = flowerJSON["query"]["pages"][pageid]["extract"].stringValue
+                
+                self.title = flowerName.capitalized
+                self.description = flowerDescription
             }
             else {
                 print("Error \(String(describing: response.result.error))")
